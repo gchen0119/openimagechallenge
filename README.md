@@ -102,3 +102,30 @@ where `<REMOTE_IP>` is assigned at the start of a VM instance.
 > gcloud compute ssh gchen@<LOCAL_IP> --command='gsutil cp /path/to/file gs://mybucket' 
 
 where `<LOCAL_IP>` can be located by `ifconfig` on macbook or `ip addr show` on linux.
+
+* Push to Container Registry hosted by google on `gcr.io`. Login to google cloud shell and 
+
+> gcloud config set project openimagechallenge 
+
+where `openimagechallenge` is the `Project ID` shown on the console. 
+Then login to get authorization and follow the steps to authenticate.
+
+> gcloud auth login
+
+Then obtain the access-token for docker
+
+> gcloud auth print-access-token
+
+Copy the access-token and go to the COS VM instance
+
+> docker login -u oauth2accesstoken -p "<paste-the-access-token-here\>" https://gcr.io
+
+Finally `push` the image into the google cloud Container Registry (just like Docker Hub)
+
+> docker push HOSTNAME/PROJECT_ID/IMAGENAME:TAG
+
+In my case
+
+> docker push gcr.io/openimageschallenge/openimage:python3.5.6-stretch
+
+
