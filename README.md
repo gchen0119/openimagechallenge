@@ -111,7 +111,7 @@ on `gcr.io`. Login to google cloud shell and
 where `openimagechallenge` is the `Project ID` shown on the console. 
 Then login to get authorization and follow the steps to authenticate.
 
->> gcloud auth login
+> gcloud auth login
 
 Then obtain the access-token for docker
 
@@ -131,4 +131,4 @@ In my case
 
 Check out the image save on the GCP registry by going the left-hand-side of the panel and click "Contianer Registry".
 
-Note access token changes every time, so always login the cloud shell to `print-access-token` pushing to the container registry 
+Note access token changes every time, so always login the cloud shell to `print-access-token`.
