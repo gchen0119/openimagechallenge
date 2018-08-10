@@ -66,6 +66,8 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 > docker push gchen0119/python-openimage
 
+* Check out my Random Notes on how to push to GCP `Container Registry`.
+
 # Start Python in the container
 
 * Detach and run the image in the `python-openimage` container
