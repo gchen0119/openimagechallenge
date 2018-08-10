@@ -31,15 +31,21 @@ This section is about how I set up the platform to enable the use of docker cont
 
 ```
 # Use the official Python runtime as a parent image
-FROM python:2.7-stretch
+FROM python:3.5.6-stretch
+# Set the working directory to /app in the containerA
+WORKDIR /app
+# Copy the current local directory contents into the container at /app
+ADD . /app
 # Install the project related packages
-RUN pip2 install -r requirements.txt
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python get-pip.py
+RUN pip2 install --trusted-host pypi.python.org -r requirements.txt
 ```
 
 > cat requirements.txt
 
 ```
-pandas \ tensorflow \ numpy \ matplotlib \ h5py \ keras \ scipy \ pydot \ argparse \ yolo_utils \ yad2k \ cv2 \ fr_utils \ inception_blocks_v2
+opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotlib \ h5py \ scipy \ pydot \ argparse \ cython
 ```
 
 * Build the `Dockerfile` to produce an image and call the repository `python-openimage` with the tag `latest`
