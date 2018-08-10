@@ -78,7 +78,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 * Start using python in the container and import all the necessary packages
 
-The YOLO wrapper is from the [link](https://github.com/madhawav/YOLO3-4-Py/blob/master/Readme.md)
+The YOLOv3 wrapper is from the [link](https://pypi.org/project/yolo34py/#description)
 
 ```python
 from keras.applications import ResNet50
