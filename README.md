@@ -117,7 +117,7 @@ on `gcr.io`, first login to google cloud shell and do
 > gcloud config set project openimagechallenge 
 
 where `openimagechallenge` is the `Project ID` shown on the console. 
-Then login to get authorization and follow the steps to authenticate.
+Then login to `gcr.io` to get authorization and follow the steps to authenticate.
 
 > gcloud auth login
 
