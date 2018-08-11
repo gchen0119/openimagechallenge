@@ -111,8 +111,8 @@ where `<REMOTE_IP>` is assigned at the start of a VM instance.
 
 where `<LOCAL_IP>` can be located by `ifconfig` on macbook or `ip addr show` on linux.
 
-* [Push to Container Registry hosted by google](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) 
-on `gcr.io`. Login to google cloud shell and 
+* In order to push the image to [Container Registry](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry)  hosted by google
+on `gcr.io`, first login to google cloud shell and do
 
 > gcloud config set project openimagechallenge 
 
