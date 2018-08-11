@@ -46,21 +46,17 @@ RUN pip2 install --trusted-host pypi.python.org -r requirements.txt
 opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotlib \ h5py \ scipy \ pydot \ argparse \ cython
 ```
 
-* Build the `Dockerfile` to produce an image and call the repository `python-openimage` with the tag `latest`
+* Build the `Dockerfile` to produce an image with name `openimage` in the repository `gchen0119` with the tag `python3.5.6-stretch`
 
 > docker build .
 
-> docker tag <IMAGE_ID> gchen0119/python-openimage:lastest 
+> docker tag <IMAGE_ID> gchen0119/openimage:python-3.5.6-stretch
 
 * Login my public registry 
 
 > docker  login --username=gchen0119 \-\-email=gchen0119@gmail.com
 
-* Tag the image with `python-openimage` and a subtag `latest` in my public docker repository [gchen0119](https://hub.docker.com/r/gchen0119) 
-
-> docker tag <IMAGE_ID> gchen0119/python-openimage:latest
-
-* Push the image onto my public registry
+* Push the image onto my public registry [gchen0119](https://hub.docker.com/r/gchen0119) 
 
 > docker push gchen0119/python-openimage
 
