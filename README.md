@@ -78,7 +78,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 * Start using python in the container and import all the necessary packages
 
-The YOLOv3 wrapper is from the [link](https://pypi.org/project/yolo34py/#description)
+
 
 ```python
 from keras.applications import ResNet50
@@ -92,7 +92,7 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
 import numpy as np
 import argparse
-from pydarknet import Detector, Image
+from pydarknet import Detector, Image # The YOLOv3 wrapper is from the https://pypi.org/project/yolo34py/#description
 import cv2
 ```
 
