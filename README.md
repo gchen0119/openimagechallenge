@@ -134,7 +134,7 @@ Copy the access-token and go to the COS VM instance
 
 Finally `push` the image into the google cloud Container Registry (just like Docker Hub)
 
-> docker push <HOSTNAME>/<PROJECT_ID>/<IMAGENAME>:TAG
+> docker push <HOSTNAME\>/<PROJECT_ID\>/<IMAGENAME\>:TAG
 
 In my case
 
