@@ -4,7 +4,7 @@
 # Overview
 This is an object localization project based on deep Convolutional Neural Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and InceptionNet using dataset from [Open Images Challenge 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to familiarize myself with hyperparameter tuning, network architecture, and data visualization. I will most likely use pre-trained weights to perform "transfered learning".
 
-# Setting up Google Cloud Platform ([GCP](https://console.cloud.google.com/home/)
+# Setting up Google Cloud Platform ([GCP](https://console.cloud.google.com/home/))
 This section is about how I set up the platform to enable the use of docker container for this project. 
 * Create VM instances (with preemptibilty to save cost) with Container-Optimized OS (COS) 66-10452.109.0 stable. 
 * Add an additional Standard Persistent Disk (500GB) to share with multiple VM by [mounting](https://cloud.google.com/compute/docs/disks/add-persistent-disk#create_disk) the disk `openimage` under the path `/mnt/disks/`.
