@@ -66,7 +66,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 * Detach and run the image in the `python-openimage` container
 
-> docker run -v /mnt/disks/openimage:/mnt --name python-openimage -d gchen0119/python-openimage tail -f /dev/null
+> docker run -v /mnt/disks/openimage:/mnt --name python-openimage -d gchen0119/openimage tail -f /dev/null
 
 * Enter the `python-openimage` container interactively in the bash session
 
