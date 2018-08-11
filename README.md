@@ -92,9 +92,13 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
 import numpy as np
 import argparse
-from pydarknet import Detector, Image # The YOLOv3 wrapper is from the https://pypi.org/project/yolo34py/#description
+from pydarknet import Detector, Image # 
 import cv2
 ```
+
+* The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/), and the python 
+wrapper by is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
+[pypi](https://pypi.org/project/yolo34py/#description).
 
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
