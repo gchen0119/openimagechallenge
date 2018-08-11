@@ -93,7 +93,7 @@ import cv2
 ```
 
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/), and the python 
-wrapper by is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
+wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
 [pypi](https://pypi.org/project/yolo34py/#description).
 
 # TO BE CONTINUED...
