@@ -88,7 +88,7 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
 import numpy as np
 import argparse
-from pydarknet import Detector, Image # 
+from pydarknet import Detector, Image # YOLOv3 package
 import cv2
 ```
 
