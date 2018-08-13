@@ -89,6 +89,7 @@ from keras.preprocessing.image import load_img
 import numpy as np
 import argparse
 from pydarknet import Detector, Image # YOLOv3 package
+# Note: one can simply build YOLOv3 related packages via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/) Dockerfile.
 import cv2
 ```
 
@@ -96,7 +97,7 @@ import cv2
 wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
 [pypi](https://pypi.org/project/yolo34py/#description).
 
-Note: one can simply build YOLOv3 related packages via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/) Dockerfile.
+
 
 # YOLO Model Details
 
