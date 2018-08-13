@@ -96,6 +96,10 @@ import cv2
 wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
 [pypi](https://pypi.org/project/yolo34py/#description).
 
+* Note: one can simply build YOLOv3 related packages via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/) Dockerfile.
+
+# YOLO Model Details
+
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
 # Random Notes
