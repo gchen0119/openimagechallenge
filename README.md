@@ -12,7 +12,7 @@ This is an object localization project based on deep Convolutional Neural Networ
 * Download the [Open Image dataset](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) to the openimage disk by simply using `wget`.
 
 * To `unzip` in COS, I run the docker image from GCP [cos-toolbox](gcr.io/google-containers/toolbox) with `-v` to mount local directory into the `toolbox` container.
-(*update: I could've used a OS-based docker image with necessary daemon and necessary python version preinstalled, which is the more direct and compact approach. 
+(*update: I could've used a OS-based docker image with necessary daemon and pre-installed python version, which is the more direct and compact approach. 
 The current approach may save a bit on memory.*)
 
 > docker run --name toolbox -v /mnt/disks/openimage:/mnt -d gcr.io/google-containers/toolbox tail -f /dev/null
