@@ -2,7 +2,7 @@
 # WELCOME TO GINO'S DATA SCIENCE PROJECT!
 
 # Overview
-This is an object localization project based on deep Convolutional Neural Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and InceptionNet using dataset from [Open Images Challenge 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to familiarize myself with hyperparameter tuning, network architecture, and data visualization. I will most likely use pre-trained weights to perform "transfered learning".
+This is an object localization project based on deep Convolutional Neural Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and InceptionNet using dataset from [Open Images Challenge 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to familiarize myself with hyperparameter tuning, network architecture, and data visualization. I will most likely use pre-trained weights to perform "transfered learning" on the output layer.
 
 # Setting up Docker-enabled Google Cloud Platform ([GCP](https://console.cloud.google.com/home/))
 * Create VM instances (with preemptibilty to save cost) with Container-Optimized OS (COS) 66-10452.109.0 stable. 
