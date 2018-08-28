@@ -100,7 +100,7 @@ import cv2
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
   with [source codes](https://github.com/pjreddie/darknet.git), 
 
-[comment]: <>  (The python wrapper is from
+[comment]: #  (The python wrapper is from
 [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
 [pypi](https://pypi.org/project/yolo34py/#description).)
 
