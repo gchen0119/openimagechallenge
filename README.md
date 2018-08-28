@@ -91,13 +91,30 @@ from keras.preprocessing.image import load_img
 import numpy as np
 import argparse
 from pydarknet import Detector, Image # YOLOv3 package
-# Note: one can simply build YOLOv3 related packages via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/) Dockerfile.
+# Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/).
 import cv2
+
+%matplotlib inline
 ```
 
-* The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/), and the python 
-wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
-[pypi](https://pypi.org/project/yolo34py/#description).
+* The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
+  with [source codes](https://github.com/pjreddie/darknet.git), 
+
+[comment]: <>  (The python wrapper is from
+[madhawav](https://github.com/madhawav/YOLO3-4-Py) and on
+[pypi](https://pypi.org/project/yolo34py/#description).)
+
+* Download the YOLOv3 weights 
+
+> wget https://pjreddie.com/media/files/yolov3.weights 
+
+* Use the Keras implementation of YOLOv3 (Tensorflow backend) by
+  [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model 
+
+> python convert.py yolov3.cfg yolov3.weights model_data/yolo.h5
+
+
+
 
 
 
