@@ -116,13 +116,16 @@ import cv2
 
 # Recap YOLOv2 and YOLO9000 strengths:
 
-* YOLOv2: 
-    * Dimension clusters to find the archor boxes, with distance measure using IoU.  
-    * Anchor boxes according to k-means clusters obtain the most frequent aspect ratios for all objects, therefore learning these boxes accelerate the training.
+* YOLOv2 Pros: 
+    * Dimension clusters using k-means distance measure with IoU to define anchor boxes/priors.  
+    * Anchor boxes obtain the most frequent aspect ratios for all objects, therefore learning these boxes accelerate the training.
     * Anchor boxes also allow multiple overlapped objects to be detected.
-    * Bounding box predictions are constrained in the grid cell by using sigmoid/logistic function ranging between 0 and 1, and accelerating the training.
+    * Bounding box center coordinate predictions are constrained in the grid cell by using sigmoid/logistic function ranging between 0 and 1, and accelerating the training.
+  Cons:
+    * Classification and detection are done on different datasets and trained sequentially with a single softmax at the output layer.
    
-* YOLO9000: Combine YOLOv2 with WordTree!
+* YOLO9000: 
+    * Combine YOLOv2 with WordTree, this resolves the joint training for classification and detection on combined datasets with multiple softmax concatenated at the output layer.
 
 
 # YOLOv3 Model Details
