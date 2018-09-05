@@ -117,11 +117,11 @@ import cv2
 # Recap YOLOv2 and YOLO9000 strengths:
 
 * YOLOv2: 
- - Dimension clusters to find the archor boxes, with distance measure using IoU.  
- - Anchor boxes according to k-means clusters obtain the most frequent aspect ratios for all objects, therefore learning these boxes accelerate the training.
- - Anchor boxes also allow multiple overlapped objects to be detected.
- - Bounding box predictions are constrained in the grid cell by using sigmoid/logistic function ranging between 0 and 1, and accelerating the training.
- -  
+ ** Dimension clusters to find the archor boxes, with distance measure using IoU.  
+ ** Anchor boxes according to k-means clusters obtain the most frequent aspect ratios for all objects, therefore learning these boxes accelerate the training.
+ ** Anchor boxes also allow multiple overlapped objects to be detected.
+ ** Bounding box predictions are constrained in the grid cell by using sigmoid/logistic function ranging between 0 and 1, and accelerating the training.
+   
 * YOLO9000: Combine YOLOv2 with WordTree!
 
 
