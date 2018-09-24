@@ -58,11 +58,10 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 > docker  login --username=gchen0119 \-\-email=gchen0119@gmail.com
 
-* Push the image onto my public registry [gchen0119](https://hub.docker.com/r/gchen0119) 
-
+* Push the image onto my Docker public registry [gchen0119](https://hub.docker.com/r/gchen0119) 
+(check out my Random Notes on how to push to GCP `Container Registry`)
 > docker push gchen0119/python-openimage:python-3.5.6-stretch
 
-* Check out my Random Notes on how to push to GCP `Container Registry`.
 
 # Start Python in the container
 
