@@ -131,7 +131,7 @@ import cv2
 * YOLOv3:
     * Predictions across 3 different scales (similar to 
       [feature pyramid network](https://arxiv.org/abs/1612.03144)).
-	* Feature pyramid network essentially connects the low level convolutional layers
+        * Feature pyramid network essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
           "lateral" connection by adding the two feature maps.
