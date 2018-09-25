@@ -65,7 +65,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 
 # Start Python in the container
 
-* Detach and run the image in the `python-openimage` container
+* Detach and run the image in the `python-openimage` container (use -v to mount local dir in the container)
 
 > docker run -v /mnt/disks/openimage:/mnt --name python-openimage -d gchen0119/openimage tail -f /dev/null
 
@@ -128,6 +128,17 @@ import cv2
 
 # YOLOv3 Model Details
 
+* YOLOv3:
+    * Predictions across 3 different scales (similar to 
+      [feature pyramid network](https://arxiv.org/abs/1612.03144)).
+	* Feature pyramid network essentially connects the low level convolutional layers
+          (with stronger localized activation) to the same-sized (i.e., same "stage") 
+          high level upsampled layers (with stronger semantics). This is called 
+          "lateral" connection by adding the two feature maps.
+    * Upsampling/Deconvolution with Fully Convolutional layers to extract
+      features from earlier layers for a meaningful semantic information.
+    * Skip connections from earlier layers to Residual layers to avoid
+      vanishing gradient problem.
 
 
 # TO BE CONTINUED...
