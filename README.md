@@ -2,7 +2,17 @@
 # WELCOME TO GINO'S DATA SCIENCE PROJECT!
 
 # Overview
-This is an object localization project based on deep Convolutional Neural Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and InceptionNet using dataset from [Open Images Challenge 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to familiarize myself with hyperparameter tuning, network architecture, and data visualization. I will most likely use pre-trained weights to perform "transfered learning" on the output layer.
+This is an object localization project based on deep Convolutional Neural
+Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and
+InceptionNet using dataset from [Open Images Challenge
+2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to
+familiarize myself with hyperparameter tuning, network architecture, and data
+visualization. I will most likely use pre-trained weights to perform "transfer
+learning" on different classes.  Notice transfer learning may involve
+"fine-tuning" the model (i.e., unfreezing the weights in previous layers) since
+the final classes and the dataset to pretrain the model may be different.
+Usually fine-tuning on the same dataset only involves unfreezing the last layer
+(for darknet using unchanged cfg file, stopbackward=1 and without "partial"). 
 
 # Setting up Docker-enabled Google Cloud Platform ([GCP](https://console.cloud.google.com/home/))
 * Create VM instances (with preemptibilty to save cost) with Container-Optimized OS (COS) 66-10452.109.0 stable. 
@@ -137,6 +147,8 @@ import cv2
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
           "lateral" connection by adding the two feature maps.
+        * The difference is that the upsampling is performed after the 
+          network is built and 
     * Upsampling/Deconvolution with Fully Convolutional layers to extract
       features from earlier layers for a meaningful semantic information.
     * Skip connections from earlier layers to Residual layers to avoid
