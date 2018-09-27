@@ -150,9 +150,9 @@ import cv2
         * For YOLOv3, a "route" at two convolutional layers before the output
 	  layer is upsampled and concatenated with an even earlier layer (with 
           localized feature activation), e.g., the "[route] -1,61" appearing in the 
-          "cfg" file is doing the "lateral" concatenation as FPN. The later
-          route will concatenate with earlier layers laterally, which is exactly
-          the idea of FPN.
+          "cfg" file is doing the "lateral" concatenation as FPN. The latter
+          route will concatenate with even earlier layers, which is exactly
+          the "Top-down pathway" laterally merging with "Bottom-up pathway" of FPN.
     * Upsampling/Deconvolution with Fully Convolutional layers to extract
       features from earlier layers for a meaningful semantic information.
     * Skip connections from earlier layers to Residual layers to avoid
