@@ -147,7 +147,7 @@ import cv2
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
           "lateral" connection by adding the two feature maps.
-	* For YOLOv3, a "route" at two convolutional layers before the output
+        * For YOLOv3, a "route" at two convolutional layers before the output
 	  layer is upsampled and concatenated with an even earlier layer (with 
           localized feature activation). The "[route] -1,61" appearing in the 
           "cfg" file is doing the "lateral" concatenation as FPN. The later
