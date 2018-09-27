@@ -153,7 +153,6 @@ import cv2
           "cfg" file is doing the "lateral" concatenation as FPN. The later
           route will concatenate with earlier layers laterally, which is exactly
           the idea of FPN.
-         
     * Upsampling/Deconvolution with Fully Convolutional layers to extract
       features from earlier layers for a meaningful semantic information.
     * Skip connections from earlier layers to Residual layers to avoid
