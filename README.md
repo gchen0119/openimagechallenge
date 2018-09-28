@@ -14,8 +14,8 @@ the final classes and the dataset to pretrain the model may be different.
 Usually fine-tuning on the same dataset only involves unfreezing the last layer
 (for darknet using unchanged cfg file, stopbackward=1 and without "partial"). 
 
-(update: Open Image dataset has weight trained, so I may do test the pretrained
-model before any training) 
+(update 9/28/2018: darknet has pretrained weights on Open Image dataset, so I will test 
+the pretrained model before any fine-tuning) 
 
 # Setting up Docker-enabled Google Cloud Platform ([GCP](https://console.cloud.google.com/home/))
 * Create VM instances (with preemptibilty to save cost) with Container-Optimized OS (COS) 66-10452.109.0 stable. 
