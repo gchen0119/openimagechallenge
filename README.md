@@ -104,7 +104,7 @@ import numpy as np
 import argparse
 from pydarknet import Detector, Image # YOLOv3 package
 # Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/).
-import cv2
+import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
 
 %matplotlib inline
 ```
@@ -114,14 +114,18 @@ import cv2
 
 [//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
 
-* Download the YOLOv3 weights 
+* Download the YOLOv3 weights for Open Images 
 
-> wget https://pjreddie.com/media/files/yolov3.weights 
+> wget https://pjreddie.com/media/files/yolov3-openimages.weights 
 
 * Use the Keras implementation of YOLOv3 (Tensorflow backend) by
-  [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model 
+  [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model, 
+  and save as `yolo-openimage.h5` (make sure to comment either the train 
+  or test `batch` and `subdivision`).
 
-> python convert.py yolov3.cfg yolov3.weights model_data/yolo.h5
+> python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimage.h5 
+
+
 
 
 
