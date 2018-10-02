@@ -100,6 +100,10 @@ from keras.applications import imagenet_utils
 from keras.applications.inception_v3 import preprocess_input
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
+from keras.models import load_model, Model
+from keras.layers import Input, Lambda, Conv2D
+from keras import backend as K
+import tensorflow as tf
 import numpy as np
 import argparse
 from pydarknet import Detector, Image # YOLOv3 package
@@ -108,28 +112,6 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
 
 %matplotlib inline
 ```
-
-* The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
-  with [source codes](https://github.com/pjreddie/darknet.git), 
-
-[//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
-
-* Download the YOLOv3 weights for Open Images 
-
-> wget https://pjreddie.com/media/files/yolov3-openimages.weights 
-
-* Use the Keras implementation of YOLOv3 (Tensorflow backend) by
-  [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model, 
-  and save as `yolo-openimage.h5` (make sure to comment either the train 
-  or test `batch` and `subdivision`).
-
-> python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimage.h5 
-
-
-
-
-
-
 # Recap YOLOv2 and YOLO9000: 
 
 * YOLOv2: 
@@ -164,6 +146,30 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
               features from earlier layers for a meaningful semantic information.
     * Skip connection/identity map from an earlier layer to a later layer 
       (i.e., residual layer) act to prevent the vanishing gradient problem.
+
+* The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
+  with [source codes](https://github.com/pjreddie/darknet.git), 
+
+[//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
+
+* Download the YOLOv3 weights for Open Images 
+
+> wget https://pjreddie.com/media/files/yolov3-openimages.weights 
+
+* Use the Keras implementation of YOLOv3 (Tensorflow backend) by
+  [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model, 
+  and save as `yolo-openimage.h5` (make sure to comment either the train 
+  or test `batch` and `subdivision`).
+
+> python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimages.h5 
+
+* Loading a pretrained model 
+
+```python
+yolo_model = load_model("model_data/yolo-openimages.h5") # load the model
+yolo_model.summary() # show a summary of the model layers
+```
+
 
 
 # TO BE CONTINUED...
