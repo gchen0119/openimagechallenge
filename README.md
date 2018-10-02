@@ -160,10 +160,10 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
           "cfg" file is doing the "lateral" concatenation as FPN. The latter
           route will concatenate with even earlier layers, which is exactly
           the "Top-down pathway" laterally merging with "Bottom-up pathway" of FPN.
-    * Upsampling/Deconvolution with Fully Convolutional layers to extract
-      features from earlier layers for a meaningful semantic information.
-    * Skip connections from earlier layers to Residual layers to avoid
-      vanishing gradient problem.
+            * Upsampling/deconvolution with fully convolutional layers to extract
+              features from earlier layers for a meaningful semantic information.
+    * Skip connection/identity map from an earlier layer to a later layer 
+      (i.e., residual layer) act to prevent the vanishing gradient problem.
 
 
 # TO BE CONTINUED...
