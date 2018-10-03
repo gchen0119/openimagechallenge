@@ -127,9 +127,15 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
   with [source codes](https://github.com/pjreddie/darknet.git), 
 
+[//]: # "Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/)."
+
 [//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
 
 ```python
+import tensorflow as tf
+import numpy as np
+import argparse
+# Keras functions
 from keras.applications import ResNet50
 from keras.applications import InceptionV3
 from keras.applications import Xception # TensorFlow ONLY
@@ -142,11 +148,9 @@ from keras.preprocessing.image import load_img
 from keras.models import load_model, Model
 from keras.layers import Input, Lambda, Conv2D
 from keras import backend as K
-import tensorflow as tf
-import numpy as np
-import argparse
+# YOLOv3 model functions
+import yolo_eval from model # Evaluate YOLO model on given input and return filtered boxes.
 from pydarknet import Detector, Image # YOLOv3 package
-# Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/).
 import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
 
 %matplotlib inline
@@ -166,8 +170,9 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
 * Defining classes, anchors and image shape
 ```python
 class_names = read_classes("model_data/openimages.names")
-anchors = read_anchors("model_data/yolo_anchors.txt") # with aspect ratios associated to certain classes 
-                                                      # of objects to determine multiple overlapped objects more effectively.
+anchors = read_anchors("model_data/yolo_anchors.txt") 
+# archor boxes are width-height pairs with aspect ratios associated to certain classes 
+# of objects to determine multiple overlapped objects more effectively.
 image_shape = (720., 1280.)    
 ```
 
@@ -177,6 +182,14 @@ image_shape = (720., 1280.)
 yolo_model = load_model("model_data/yolo-openimages.h5") # load the model
 yolo_model.summary() # show a summary of the model layers
 ```
+* Loading the YOLOv3 model functions
+```python
+```
+
+
+```python
+yolo_eval(yolo_outputs, anchors, num_classes, image_shapes, max_boxes, score_threshold, iou_threshold)
+
 
 
 
