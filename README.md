@@ -125,7 +125,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
       (i.e., residual layer) act to prevent the vanishing gradient problem.
 
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
-  with [source codes](https://github.com/pjreddie/darknet.git), 
+  with [source codes](https://github.com/pjreddie/darknet.git). 
 
 [//]: # "Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/)."
 
@@ -135,6 +135,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 import tensorflow as tf
 import numpy as np
 import argparse
+import sys
 # Keras functions
 from keras.applications import ResNet50
 from keras.applications import InceptionV3
@@ -149,9 +150,11 @@ from keras.models import load_model, Model
 from keras.layers import Input, Lambda, Conv2D
 from keras import backend as K
 # YOLOv3 model functions
-import yolo_eval from model # Evaluate YOLO model on given input and return filtered boxes.
+sys.path.append('/mnt/python/keras-yolo3/')
+from yolo3.model import yolo_eval # Evaluate YOLO model on given input and return filtered boxes.
 from pydarknet import Detector, Image # YOLOv3 package
 import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
+import yolo
 
 %matplotlib inline
 ```
@@ -162,7 +165,7 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
 
 * Use the Keras implementation of YOLOv3 (Tensorflow backend) by
   [qqwweee](https://github.com/qqwweee/keras-yolo3) to build the model, 
-  and save as `yolo-openimage.h5` (make sure to comment either the train 
+  and save as `yolo-openimages.h5` (make sure to comment either the train 
   or test `batch` and `subdivision`).
 
 > python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimages.h5 
@@ -182,14 +185,13 @@ image_shape = (720., 1280.)
 yolo_model = load_model("model_data/yolo-openimages.h5") # load the model
 yolo_model.summary() # show a summary of the model layers
 ```
-* Loading the YOLOv3 model functions
+
 ```python
+# configure the default for YOLOv3 on Open Images
+yolo.YOLO._defaults['model_path']='model_data/yolo-openimages.h5'
+yolo.YOLO._defaults['classes_path']='model_data/openimages.names'
+yolo.detect_video(yolo.YOLO(),"/mnt/python/keras-yolo3/testpath/dog1.jpg","/mnt/python/keras-yolo3/testpath/")
 ```
-
-
-```python
-yolo_eval(yolo_outputs, anchors, num_classes, image_shapes, max_boxes, score_threshold, iou_threshold)
-
 
 
 
