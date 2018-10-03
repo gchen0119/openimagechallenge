@@ -89,32 +89,9 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 * Start using python in the container and import all the necessary packages
 
 
-
-```python
-from keras.applications import ResNet50
-from keras.applications import InceptionV3
-from keras.applications import Xception # TensorFlow ONLY
-from keras.applications import VGG16
-from keras.applications import VGG19
-from keras.applications import imagenet_utils
-from keras.applications.inception_v3 import preprocess_input
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import load_img
-from keras.models import load_model, Model
-from keras.layers import Input, Lambda, Conv2D
-from keras import backend as K
-import tensorflow as tf
-import numpy as np
-import argparse
-from pydarknet import Detector, Image # YOLOv3 package
-# Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/).
-import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
-
-%matplotlib inline
-```
 # Recap YOLOv2 and YOLO9000: 
 
-* YOLOv2: 
+* YOLOv2 (19-conv layers): 
     * Dimension clusters using k-means distance measure with IoU to define anchor boxes/priors.  
     * Anchor boxes obtain the most frequent aspect ratios for all objects, therefore learning these boxes accelerate the training.
     * Anchor boxes also allow multiple overlapped objects to be detected.
@@ -127,7 +104,7 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
 
 # YOLOv3 Model Details
 
-* YOLOv3:
+* YOLOv3 (53-conv layers):
     * Use independent logistic classifiers for each class 
       (i.e. multilabel classification, e.g., Women and Person).
     * Predictions across 3 different scales (similar to 
@@ -152,6 +129,29 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
 
 [//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
 
+```python
+from keras.applications import ResNet50
+from keras.applications import InceptionV3
+from keras.applications import Xception # TensorFlow ONLY
+from keras.applications import VGG16
+from keras.applications import VGG19
+from keras.applications import imagenet_utils
+from keras.applications.inception_v3 import preprocess_input
+from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import load_img
+from keras.models import load_model, Model
+from keras.layers import Input, Lambda, Conv2D
+from keras import backend as K
+import tensorflow as tf
+import numpy as np
+import argparse
+from pydarknet import Detector, Image # YOLOv3 package
+# Note: one can simply build YOLOv3 related packages with Dockerfile via [madhawav's](https://github.com/madhawav/YOLO3-4-Py/blob/master/docker/).
+import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
+
+%matplotlib inline
+```
+
 * Download the YOLOv3 weights for Open Images 
 
 > wget https://pjreddie.com/media/files/yolov3-openimages.weights 
@@ -162,6 +162,14 @@ import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet
   or test `batch` and `subdivision`).
 
 > python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimages.h5 
+
+* Defining classes, anchors and image shape
+```python
+class_names = read_classes("model_data/openimages.names")
+anchors = read_anchors("model_data/yolo_anchors.txt") # with aspect ratios associated to certain classes 
+                                                      # of objects to determine multiple overlapped objects more effectively.
+image_shape = (720., 1280.)    
+```
 
 * Loading a pretrained model 
 
