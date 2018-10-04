@@ -124,6 +124,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
     * Skip connection/identity map from an earlier layer to a later layer 
       (i.e., residual layer) act to prevent the vanishing gradient problem.
 
+# Environment setup and testing 
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
   with [source codes](https://github.com/pjreddie/darknet.git). 
 
@@ -195,8 +196,10 @@ yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.sav
 ./darknet detector test cfg/openimages.data cfg/yolov3-openimages.cfg yolov3-openimages.weights
 ```
 
-* Test image result
+* Test image result, notice multiple labels around the dog showing dependencies between classes!
 ![alt](doggy.jpg)
+
+# Start training 
 
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
