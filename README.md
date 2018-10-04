@@ -155,6 +155,7 @@ from yolo3.model import yolo_eval # Evaluate YOLO model on given input and retur
 from pydarknet import Detector, Image # YOLOv3 package
 import cv2 # OpenCV, OpenCV 3.4.1 will fail with darknet 
 import yolo
+import yolo_video
 
 %matplotlib inline
 ```
@@ -186,13 +187,20 @@ yolo_model = load_model("model_data/yolo-openimages.h5") # load the model
 yolo_model.summary() # show a summary of the model layers
 ```
 
+* Model detection
+
 ```python
-# configure the default for YOLOv3 on Open Images
+# configure the default to YOLOv3 on Open Images
 yolo.YOLO._defaults['model_path']='model_data/yolo-openimages.h5'
 yolo.YOLO._defaults['classes_path']='model_data/openimages.names'
-yolo.detect_video(yolo.YOLO(),"/mnt/python/keras-yolo3/testpath/dog1.jpg","/mnt/python/keras-yolo3/testpath/")
+yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.save(filename) to yolo_video.py
+# yolo_video.detect_img() uses yolo.detect_image(), with additional ability to input multiple images on the fly
 ```
 
+* Verify the results by darknet  
+```c
+./darknet detector test cfg/openimages.data cfg/yolov3-openimages.cfg yolov3-openimages.weights
+```
 
 
 # TO BE CONTINUED...
