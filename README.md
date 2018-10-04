@@ -171,14 +171,6 @@ import yolo_video
 
 > python convert.py yolov3-openimages.cfg yolov3-openimages.weights model_data/yolo-openimages.h5 
 
-* Defining classes, anchors and image shape
-```python
-class_names = read_classes("model_data/openimages.names")
-anchors = read_anchors("model_data/yolo_anchors.txt") 
-# archor boxes are width-height pairs with aspect ratios associated to certain classes 
-# of objects to determine multiple overlapped objects more effectively.
-image_shape = (720., 1280.)    
-```
 
 * Loading a pretrained model 
 
@@ -193,6 +185,7 @@ yolo_model.summary() # show a summary of the model layers
 # configure the default to YOLOv3 on Open Images
 yolo.YOLO._defaults['model_path']='model_data/yolo-openimages.h5'
 yolo.YOLO._defaults['classes_path']='model_data/openimages.names'
+yolo.YOLO._defaults['anchors_path']='model_data/yolo_anchors.txt'
 yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.save(filename) to yolo_video.py
 # yolo_video.detect_img() uses yolo.detect_image(), with additional ability to input multiple images on the fly
 ```
