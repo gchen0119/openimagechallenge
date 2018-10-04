@@ -179,7 +179,7 @@ yolo_model = load_model("model_data/yolo-openimages.h5") # load the model
 yolo_model.summary() # show a summary of the model layers
 ```
 
-* Model detection (uses yolo.eval() to return bounding boxes, yolo.head() returns the bounding box dimensions and feature probability)
+* Object detection (uses yolo.eval() to return bounding boxes, yolo.head() returns the bounding box dimensions and feature probability)
 
 ```python
 # configure the default to YOLOv3 on Open Images
