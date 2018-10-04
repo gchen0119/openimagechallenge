@@ -124,7 +124,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
     * Skip connection/identity map from an earlier layer to a later layer 
       (i.e., residual layer) act to prevent the vanishing gradient problem.
 
-# Environment setup and testing 
+# Environment setup and testing for darknet with Keras
 * The YOLOv3 is developed by [pjreddie](https://pjreddie.com/darknet/yolo/)
   with [source codes](https://github.com/pjreddie/darknet.git). 
 
