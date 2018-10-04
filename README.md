@@ -133,23 +133,24 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 [//]: # "The python wrapper is from [madhawav](https://github.com/madhawav/YOLO3-4-Py) and on [pypi](https://pypi.org/project/yolo34py/#description)."
 
 ```python
-import tensorflow as tf
-import numpy as np
-import argparse
-import sys
 # Keras functions
-from keras.applications import ResNet50
-from keras.applications import InceptionV3
-from keras.applications import Xception # TensorFlow ONLY
-from keras.applications import VGG16
-from keras.applications import VGG19
-from keras.applications import imagenet_utils
-from keras.applications.inception_v3 import preprocess_input
+# Try these CNN later on
+#from keras.applications import ResNet50
+#from keras.applications import InceptionV3
+#from keras.applications import Xception # TensorFlow ONLY
+#from keras.applications import VGG16
+#from keras.applications import VGG19
+#from keras.applications import imagenet_utils
+#from keras.applications.inception_v3 import preprocess_input
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
 from keras.models import load_model, Model
 from keras.layers import Input, Lambda, Conv2D
 from keras import backend as K
+import tensorflow as tf
+import numpy as np
+import argparse
+import sys
 # YOLOv3 model functions
 sys.path.append('/mnt/python/keras-yolo3/')
 from yolo3.model import yolo_eval # Evaluate YOLO model on given input and return filtered boxes.
@@ -199,11 +200,15 @@ yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.sav
 * Test image result, notice multiple labels around the dog showing dependencies between classes!
 ![alt](doggy.jpg)
 
-# Start training 
+# Start fine-tuning with Open Images data
+
+* `train.py` does a freeze retraining and then a unfreeze retraining if mAP (mean average precision) aren't that good.
 
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
 # Random Notes
+* My [notes](https://github.com/ginochen/macHome/tree/master/notes/c/darknet) on darknet source code (C and Keras).
+
 * Transferring data between my laptop and the VM instance using the save ssh private key
 
 > scp -i ~/.ssh/google_compute_engine /path/to/file gino@<REMOTE_IP>
