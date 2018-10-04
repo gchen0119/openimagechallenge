@@ -195,6 +195,8 @@ yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.sav
 ./darknet detector test cfg/openimages.data cfg/yolov3-openimages.cfg yolov3-openimages.weights
 ```
 
+* Test image result
+![alt](https://storage.cloud.google.com/opimage/tmp/doggy.jpg?_ga=2.17893305.-168571908.1533227423&_gac=1.89631465.1538421306.Cj0KCQjwi8fdBRCVARIsAEkDvnIwHURtxmo75dclXoQUoYzInmoxR5aj3O5BewSpQSCwQ_MAIHqilHEaArdoEALw_wcB)
 
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
