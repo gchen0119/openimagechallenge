@@ -112,7 +112,6 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 <p align="center">
   <img src="feature_pyramid.png" alt="Sublime's custom image"/>
 </p>
-      ![alt](feature_pyramid.png) 
         * FPN essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
