@@ -109,11 +109,13 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
       (i.e. multilabel classification, e.g., Women and Person).
     * Predictions across 3 different scales (similar to 
       [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144)).
+
+          ![alt](feature_pyramid.png) 
+
         * FPN essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
-          "lateral" connection by adding the two feature maps. 
-          ![alt](feature_pyramid.png) 
+          "lateral" connection by adding the two feature maps. See figure from the 
         * For YOLOv3, a "route" at two convolutional layers before the output
 	  layer is upsampled and concatenated with an even earlier layer (with 
           localized feature activation), e.g., the "[route] -1,61" appearing in the 
