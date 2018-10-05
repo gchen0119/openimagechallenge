@@ -107,8 +107,8 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
 * YOLOv3 (53-conv layers):
     * Use independent logistic classifiers for each class 
       (i.e. multilabel classification, e.g., Women and Person).
-    * Predictions across 3 different scales (similar to 
-      [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144), Figure 3).
+    * Predictions across 3 different scales (similar to Figure 3 in 
+      [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144)).
       ![alt](feature_pyramid.png) 
         * FPN essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
