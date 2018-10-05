@@ -109,7 +109,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
       (i.e. multilabel classification, e.g., Women and Person).
     * Predictions across 3 different scales (similar to Figure 3 in 
       [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144)).
-         <p align="center">
+        * <p align="center">
             <img src="feature_pyramid.png" alt="Sublime's custom image"/>
           </p>
         * FPN essentially connects the low level convolutional layers
