@@ -110,7 +110,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
     * Predictions across 3 different scales (similar to Figure 3 in 
       [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144)).
         * <p align="center">
-            <img src="feature_pyramid.png" alt="Sublime's custom image"/>
+            <img src="feature_pyramid.png"/>
           </p>
         * FPN essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
