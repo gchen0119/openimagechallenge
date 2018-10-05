@@ -200,9 +200,11 @@ yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.sav
 * Test image result, notice multiple labels around the dog showing dependencies between classes!
 ![alt](doggy.jpg)
 
+# Test the mAP (mean average precision) of current Open Image data
+
 # Start fine-tuning with Open Images data
 
-* `train.py` does a freeze retraining and then a unfreeze retraining if mAP (mean average precision) aren't that good.
+* `train.py` does a freeze retraining and then a unfreeze retraining if mAP aren't that good.
 
 # TO BE CONTINUED...
 --------------------------------------------------------------------------------------
