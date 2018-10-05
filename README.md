@@ -205,7 +205,11 @@ yolo_video.detect_img(yolo.YOLO()) # comment r_image.show(), and add r_image.sav
 
 # Test the mAP (mean average precision) of current Open Image data
 
+
 # Start fine-tuning with Open Images data
+
+* Need to create a file `openimages_annotation.py` following `voc_annotation.py` to use train.py on `train.txt` with lines as 
+  `path/to/img.jpg xmin1,ymin1,xmax1,ymax1,class_id1 xmin2,ymin2,xmax2,ymax2,class_id2`.
 
 * `train.py` does a freeze retraining and then a unfreeze retraining if mAP aren't that good.
 
