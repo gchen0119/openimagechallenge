@@ -115,7 +115,7 @@ opencv-python \ keras \ pandas \ numpy==1.14.5 \ cython \ tensorflow \ matplotli
         * FPN essentially connects the low level convolutional layers
           (with stronger localized activation) to the same-sized (i.e., same "stage") 
           high level upsampled layers (with stronger semantics). This is called 
-          "lateral" connection by adding the two feature maps. See figure from the 
+          "lateral" connection by adding the two feature maps. 
         * For YOLOv3, a "route" at two convolutional layers before the output
 	  layer is upsampled and concatenated with an even earlier layer (with 
           localized feature activation), e.g., the "[route] -1,61" appearing in the 
