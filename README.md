@@ -22,8 +22,8 @@ the pretrained model before any fine-tuning)
 * Add an additional *Standard Persistent Disk* to share with multiple VM by [mounting](https://cloud.google.com/compute/docs/disks/add-persistent-disk#create_disk) the disk `openimage` under the path `/mnt/disks/`.
 
 # Data acquisition
-* Method 1 (preferred): Bigquery 
-* Bigquery setup: at "openimagesChallenge" click "Create new dataset" and enter `open_images_yolov3` for "Dataset ID".
+* Method 1 (preferred): [Bigquery](https://bigquery.cloud.google.com/table/)
+* At "openimagesChallenge" click "Create new dataset" and enter `open_images_yolov3` for "Dataset ID".
   (caution: unselect "Use Legacy SQL" to enable "Standard SQL Dialect").
 * Run the query for keras-yolo3 annotation file:
   ```
