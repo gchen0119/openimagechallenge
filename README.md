@@ -23,49 +23,49 @@ the pretrained model before any fine-tuning)
 
 # Data acquisition
 * Method 1 (preferred): [Bigquery](https://bigquery.cloud.google.com/table/)
-* At "openimagesChallenge" click "Create new dataset" and enter `open_images_yolov3` for "Dataset ID".
-  (caution: unselect "Use Legacy SQL" to enable "Standard SQL Dialect").
-* Run the query for keras-yolo3 annotation file:
-  ```
-  SELECT im.original_url, ab.x_min, ab.x_max, ab.y_min, ab.y_max, ab.label_name
-  FROM `bigquery-public-data.open_images.annotations_bbox` as ab
-  JOIN `bigquery-public-data.open_images.images` as im
-  ON ab.image_id = im.image_id
-  ```
-  click "Save as table" and set "Destination table" to "open_images_annotation". Now we can use PySpark to set the 
-  [configuration](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml) for importing data from BigQUery:
-  ``` python
-  sc = SparkContext()
-  spark = SparkSession(sc)
-  bucket = spark._jsc.hadoopConfiguration().get("fs.gs.system.bucket")
-  project = spark._jsc.hadoopConfiguration().get("fs.gs.project.id")
-  todays_date = datetime.strftime(datetime.today(), "%Y-%m-%d-%H-%M-%S")
-  input_directory = "gs://{}/tmp/open_images-{}".format(bucket, todays_date)
-  conf = {
-      "mapred.bq.project.id": project,
-      "mapred.bq.gcs.bucket": bucket,
-      "mapred.bq.temp.gcs.path": input_directory,
-      "mapred.bq.input.project.id": project,
-      "mapred.bq.input.dataset.id": "open_images_yolov3",
-      "mapred.bq.input.table.id": "open_images_annotation",
-      }
-  ``` 
+  * At "openimagesChallenge" click "Create new dataset" and enter `open_images_yolov3` for "Dataset ID".
+    (caution: unselect "Use Legacy SQL" to enable "Standard SQL Dialect").
+  * Run the query for keras-yolo3 annotation file:
+    ```
+    SELECT im.original_url, ab.x_min, ab.x_max, ab.y_min, ab.y_max, ab.label_name
+    FROM `bigquery-public-data.open_images.annotations_bbox` as ab
+    JOIN `bigquery-public-data.open_images.images` as im
+    ON ab.image_id = im.image_id
+    ```
+    click "Save as table" and set "Destination table" to "open_images_annotation". Now we can use PySpark to set the 
+    [configuration](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml) for importing data from BigQUery:
+    ``` python
+    sc = SparkContext()
+    spark = SparkSession(sc)
+    bucket = spark._jsc.hadoopConfiguration().get("fs.gs.system.bucket")
+    project = spark._jsc.hadoopConfiguration().get("fs.gs.project.id")
+    todays_date = datetime.strftime(datetime.today(), "%Y-%m-%d-%H-%M-%S")
+    input_directory = "gs://{}/tmp/open_images-{}".format(bucket, todays_date)
+    conf = {
+        "mapred.bq.project.id": project,
+        "mapred.bq.gcs.bucket": bucket,
+        "mapred.bq.temp.gcs.path": input_directory,
+        "mapred.bq.input.project.id": project,
+        "mapred.bq.input.dataset.id": "open_images_yolov3",
+        "mapred.bq.input.table.id": "open_images_annotation",
+        }
+    ``` 
 
 * Method 2: Manual download
-* Download the [Open Image dataset](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) to the openimage disk by simply using `wget`."
+  * Download the [Open Image dataset](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) to the openimage disk by simply using `wget`."
 
-* To `unzip` in COS, I run the docker image from GCP [cos-toolbox](gcr.io/google-containers/toolbox) with `-v` to mount local directory into the `toolbox` container.
+  * To `unzip` in COS, I run the docker image from GCP [cos-toolbox](gcr.io/google-containers/toolbox) with `-v` to mount local directory into the `toolbox` container.
 (*update: I could've used a OS-based docker image with necessary daemon and pre-installed python version, which is the more direct and compact approach. 
 The current approach may save a bit on memory.*)
 
-> docker run --name toolbox -v /mnt/disks/openimage:/mnt -d gcr.io/google-containers/toolbox tail -f /dev/null
-* Run an interactive bash session in the `toolbox` container
+  > docker run --name toolbox -v /mnt/disks/openimage:/mnt -d gcr.io/google-containers/toolbox tail -f /dev/null
+  * Run an interactive bash session in the `toolbox` container
 
-> docker exec -it toolbox bash
+  > docker exec -it toolbox bash
 
-* `unzip` the data in the mounted directory `/mnt` in the container, pointing to the persistent disk /mnt/disks/openimage (mounted on my local VM directory).
+  * `unzip` the data in the mounted directory `/mnt` in the container, pointing to the persistent disk /mnt/disks/openimage (mounted on my local VM directory).
 
-> unzip train00.zip
+  > unzip train00.zip
 
 # Setting up Python packages with Docker
 *  Create `Dockerfile` to manage the python environment for this project. 
