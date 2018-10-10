@@ -6,7 +6,7 @@ This is an object localization project based on deep Convolutional Neural
 Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and
 InceptionNet using dataset from [Open Images Challenge
 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to
-familiarize myself with hyperparameter tuning, network architecture, and data
+familiarize with hyperparameter tuning, network architecture, and data
 visualization. I will most likely use pre-trained weights to perform "transfer
 learning" on different classes.  Notice transfer learning may involve
 "fine-tuning" the model (i.e., unfreezing the weights in previous layers) since
@@ -22,7 +22,37 @@ the pretrained model before any fine-tuning)
 * Add an additional *Standard Persistent Disk* to share with multiple VM by [mounting](https://cloud.google.com/compute/docs/disks/add-persistent-disk#create_disk) the disk `openimage` under the path `/mnt/disks/`.
 
 # Data acquisition
-* Download the [Open Image dataset](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) to the openimage disk by simply using `wget`.
+* Method 1 (preferred): Bigquery 
+* Bigquery setup: at "openimagesChallenge" click "Create new dataset" and enter `open_images_yolov3` for "Dataset ID".
+  (caution: unselect "Use Legacy SQL" to enable "Standard SQL Dialect").
+* Run the query for keras-yolo3 annotation file:
+  ```
+  SELECT im.original_url, ab.x_min, ab.x_max, ab.y_min, ab.y_max, ab.label_name
+  FROM `bigquery-public-data.open_images.annotations_bbox` as ab
+  JOIN `bigquery-public-data.open_images.images` as im
+  ON ab.image_id = im.image_id
+  ```
+  click "Save as table" and set "Destination table" to "open_images_annotation". Now we can use PySpark to set the 
+  [configuration](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml) for importing data from BigQUery:
+  ``` python
+  sc = SparkContext()
+  spark = SparkSession(sc)
+  bucket = spark._jsc.hadoopConfiguration().get("fs.gs.system.bucket")
+  project = spark._jsc.hadoopConfiguration().get("fs.gs.project.id")
+  todays_date = datetime.strftime(datetime.today(), "%Y-%m-%d-%H-%M-%S")
+  input_directory = "gs://{}/tmp/open_images-{}".format(bucket, todays_date)
+  conf = {
+      "mapred.bq.project.id": project,
+      "mapred.bq.gcs.bucket": bucket,
+      "mapred.bq.temp.gcs.path": input_directory,
+      "mapred.bq.input.project.id": project,
+      "mapred.bq.input.dataset.id": "open_images_yolov3",
+      "mapred.bq.input.table.id": "open_images_annotation",
+      }
+  ``` 
+
+* Method 2: Manual download
+* Download the [Open Image dataset](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) to the openimage disk by simply using `wget`."
 
 * To `unzip` in COS, I run the docker image from GCP [cos-toolbox](gcr.io/google-containers/toolbox) with `-v` to mount local directory into the `toolbox` container.
 (*update: I could've used a OS-based docker image with necessary daemon and pre-installed python version, which is the more direct and compact approach. 
