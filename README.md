@@ -32,9 +32,16 @@ the pretrained model before any fine-tuning)
     JOIN `bigquery-public-data.open_images.images` as im
     ON ab.image_id = im.image_id
     ```
+
     click "Save as table" and set "Destination table" to "open_images_annotation". Now we can use PySpark to set the 
     [configuration](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml) for importing data from BigQUery:
+
     ``` python
+    from datetime import datetime
+    from pyspark.context import SparkContext
+    from pyspark.ml.linalg import Vectors
+    from pyspark.sql.session import SparkSession
+
     sc = SparkContext()
     spark = SparkSession(sc)
     bucket = spark._jsc.hadoopConfiguration().get("fs.gs.system.bucket")
@@ -49,6 +56,12 @@ the pretrained model before any fine-tuning)
         "mapred.bq.input.dataset.id": "open_images_yolov3",
         "mapred.bq.input.table.id": "open_images_annotation",
         }
+    # Read the data from BigQuery into Spark as an RDD.
+    table_data = spark.sparkContext.newAPIHadoopRDD(
+        "com.google.cloud.hadoop.io.bigquery.JsonTextBigQueryInputFormat",
+        "org.apache.hadoop.io.LongWritable",
+        "com.google.gson.JsonObject",
+        conf=conf)
     ``` 
 
 * Method 2: Manual download
