@@ -2,14 +2,14 @@
 # CNN (YOLOv3) for object detection and classification
 
 # Overview
-This is an object localization project based on deep Convolutional Neural
+This is a project based on deep Convolutional Neural
 Network (CNN). I will explore the state-of-the-art CNN with ResNet, YOLO, and
 InceptionNet using dataset from [Open Images Challenge
 2018](https://storage.googleapis.com/openimages/web/index.html). The goal is to
 familiarize with hyperparameter tuning, network architecture, and data
-visualization. I will most likely use pre-trained weights to perform "transfer
-learning" on different classes.  Notice transfer learning may involve
-"fine-tuning" the model (i.e., unfreezing the weights in previous layers) since
+visualization. I will use pre-trained weights to perform "transfer
+learning" on different classes, which may involve "fine-tuning" the model
+(i.e., unfreezing the weights in previous layers) since
 the final classes and the dataset to pretrain the model may be different.
 Usually fine-tuning on the same dataset only involves unfreezing the last layer
 (for darknet using unchanged cfg file, stopbackward=1 and without "partial"). 
