@@ -1,5 +1,5 @@
 
-# WELCOME TO GINO'S DATA SCIENCE PROJECT!
+# CNN (YOLOv3) for object detection and classification
 
 # Overview
 This is an object localization project based on deep Convolutional Neural
